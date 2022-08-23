@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/BurntSushi/toml v1.2.0
-	github.com/TBD54566975/ssi-sdk v0.0.0-20220719010135-e2fdcfb80e49
+	github.com/TBD54566975/ssi-sdk v0.0.0-20220815224926-7327f2062fce
 	github.com/ardanlabs/conf v1.5.0
 	github.com/dimfeld/httptreemux/v5 v5.4.0
 	github.com/go-playground/locales v0.14.0
