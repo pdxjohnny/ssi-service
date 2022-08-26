@@ -24,6 +24,8 @@ require (
 
 require go.etcd.io/bbolt v1.3.6
 
+require github.com/rs/cors v1.8.2 // indirect
+
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect

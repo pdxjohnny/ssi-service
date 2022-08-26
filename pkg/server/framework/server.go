@@ -3,6 +3,7 @@ package framework
 
 import (
 	"context"
+	"github.com/rs/cors"
 	"net/http"
 	"os"
 	"syscall"
@@ -50,6 +51,9 @@ type Server struct {
 
 // NewHTTPServer creates a Server that handles a set of routes for the application.
 func NewHTTPServer(config config.ServerConfig, shutdown chan os.Signal, mw ...Middleware) *Server {
+
+	//handler := cors.Default().Handler(nil)
+
 	var tracer trace.Tracer
 	if config.JagerEnabled {
 		tracer = otel.Tracer(serviceName)
@@ -107,7 +111,9 @@ func (s *Server) Handle(method string, path string, handler Handler, mw ...Middl
 		}
 	}
 
-	s.ContextMux.Handle(method, path, h)
+	//s.ContextMux.Handle(method, path, h)
+	corsHandler := cors.Default().Handler(http.HandlerFunc(h))
+	s.ContextMux.Handle(method, path, corsHandler.ServeHTTP)
 }
 
 // SignalShutdown is used to gracefully shut down the server when an integrity
