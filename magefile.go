@@ -24,10 +24,16 @@ var (
 	Go = "go"
 )
 
-// Build builds the library.
+// Build builds the package.
 func Build() error {
-	fmt.Println("Building...")
+	fmt.Println("Building package...")
 	return sh.Run(Go, "build", "-tags", "jwx_es256k", "./...")
+}
+
+// Artifact builds the binary.
+func Artifact() error {
+	fmt.Println("Building binary...")
+	return sh.Run(Go, "build", "-tags", "jwx_es256k", "-o", "./bin/ssi-service", "./cmd")
 }
 
 // Vuln downloads and runs govulncheck https://go.dev/blog/vuln
